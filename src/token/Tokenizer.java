@@ -1,4 +1,4 @@
-package tokenPackage;
+package token;
 
 public class Tokenizer {
 
