@@ -1,6 +1,6 @@
 package enumerations;
 
-public enum Visibilite {
+public enum Properties {
 	
 	PUBLIC, 
 	STATIC,

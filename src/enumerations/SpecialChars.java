@@ -1,6 +1,6 @@
 package enumerations;
 
-public enum CaracteresSpeciaux {
+public enum SpecialChars {
 	
 	//les caracteres speciaux :  "==", "{}" ,"()" , "," , ";", "?", ":" , "[]" , les guillemets, les simples cotes , "&&", "||",
 	
@@ -20,8 +20,4 @@ public enum CaracteresSpeciaux {
 	OU,
 	GUILLEMET,
 	COTE
-	
-	
-	
-
 }
