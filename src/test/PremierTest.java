@@ -1,4 +1,4 @@
-package testPackage;
+package test;
 
 public class PremierTest {
 

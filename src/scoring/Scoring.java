@@ -1,4 +1,4 @@
-package scoringPackage;
+package scoring;
 
 public class Scoring {
 
