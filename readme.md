@@ -23,7 +23,7 @@ En sortie, le parser renvoie ses r&eacute;sultats.
 
 
 
-#### Troisième &eacute;tape : &eacute;valuation
+#### Troisi&egrave;me &eacute;tape : &eacute;valuation
 
-Pour cette dernière &eacute;tape, l'&eacute;valuation ("scoring") va nous permettre de v&eacute;rifier si les bonnes pratiques sont respect&eacute;es et mettre sous forme de rapport les r&eacute;sultats du parser
+Pour cette derni&egrave;re &eacute;tape, l'&eacute;valuation ("scoring") va nous permettre de v&eacute;rifier si les bonnes pratiques sont respect&eacute;es et mettre sous forme de rapport les r&eacute;sultats du parser
 
