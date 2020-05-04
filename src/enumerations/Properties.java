@@ -5,6 +5,8 @@ public enum Properties {
 	PUBLIC, 
 	STATIC,
 	PRIVATE,
-	PROTECTED
+	PROTECTED,
+	PACKAGE,
+	IMPORT
 
 }

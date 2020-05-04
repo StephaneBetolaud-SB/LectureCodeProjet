@@ -19,5 +19,7 @@ public enum SpecialChars {
 	ET,
 	OU,
 	GUILLEMET,
-	COTE
+	COTE,
+	SLASH,
+	ANTISLASH
 }
