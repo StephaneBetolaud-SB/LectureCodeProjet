@@ -1,4 +1,4 @@
-## Analyse fonctionnelle de l'analyseur de code
+## Analyse fonctionnelle de l'analyseur de code
 
 #### Bonnes pratiques &agrave; respecter
 
@@ -6,7 +6,7 @@
 * Moins de 200 lignes
 * Attributs de classe priv&eacute;s avec getters et setters
 
-#### Première &eacute;tape : tokenization
+#### Premi&egrave;re &eacute;tape : tokenization
 Notre programme affecte un token &agrave; chaque mot. Chaque mot fait partie d'une cat&eacute;gorie.
 Nous avons plusieurs cat&eacute;gories :
 * les caractères sp&eacute;ciaux : &quot;==&quot;, &quot;=&quot;, &quot;{}&quot; ,&quot;()&quot; , &quot;,&quot; , &quot;;&quot;, &quot;?&quot;, &quot;:&quot; , &quot;[]&quot; , &quot; &quot;&quot; &quot;, &quot;''&quot; , &quot;&&&quot;, &quot;||&quot;
@@ -15,8 +15,7 @@ Nous avons plusieurs cat&eacute;gories :
 
 Chaque token attribu&eacute; sera ajout&eacute; &agrave; une liste, cette liste sera parcourue par le parser. 
 
-
-#### Deuxième &eacute;tape : analyse syntaxique
+#### Deuxi&egrave;me &eacute;tape : analyse syntaxique
 
 L'analyse se fait dans le parser. L'arbre constitu&eacute; de tokens est parcouru et va faire un compte rendu de son contenu.
 Le parser va &eacute;galement v&eacute;rifier combien de sympobles / variables / types il existe dans le code.
