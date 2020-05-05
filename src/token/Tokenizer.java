@@ -31,6 +31,7 @@ public class Tokenizer {
 	private static final String typeDouble = "double";
 	private static final String typeString = "String";
 	private static final String typeChar = "char";
+	public static final String typeVoid = "void";
 	
 	// special chars
 	
@@ -86,21 +87,47 @@ public class Tokenizer {
 				if(isStringType) {
 					if(strings.get(i+3).equals(semiColon)) {
 						Token token = new Token(strings.get(i+2).toString(),"ClassVariable",strings.get(i+1), "noValue");
+						Token tokenEndStatement = new Token("semiColon","EndStatement", "specialChars", ";");
 						listToken.add(token);
+						listToken.add(tokenEndStatement);
+					}
+					
+					if(strings.get(i+3).equals(equal)) {
+							// affectation d'une valeur a une variable
+							Token token = new Token(strings.get(i+2).toString(),"ClassVariable",strings.get(i+1),strings.get(i+4));
+							listToken.add(token);
+							if(strings.get(i+5).equals(semiColon)) {
+								Token tokenEndStatement = new Token("semiColon","EndStatement", "specialChars", ";");
+								listToken.add(tokenEndStatement);
+							}
+						}
+						
+					// c'est une methode sans arguments
+					if(strings.get(i+2).contains("()")) {
+						Token methodToken = new Token(strings.get(i+2),"method width no arguments",strings.get(i+1),"noValue");
+						listToken.add(methodToken);
 					}
 					else {
-						Token token = new Token(strings.get(i+2).toString(),"ClassVariable",strings.get(i+1),strings.get(i+4));
-						listToken.add(token);
+						// methodes avec arguments
+						
 					}
+					
 				}
 				else {
 					if(strings.get(i+1).equals("class")) {
 						Token token = new Token(strings.get(i+2), "ClassName","","noValue");
 						listToken.add(token);
+						if(strings.get(i+3).equals(openedBracket)) {
+							Token openedBracketToken = new Token("openedBracket", "start_class", "specialChars", "{");
+							listToken.add(openedBracketToken);
+						}
 					}
-					else {
-						// il s'agit d'une methode on verra plus tard
-					}
+				}
+			}
+			if(i == strings.size()-1) {
+				if(strings.get(i).equals(closedBracket)) {
+					Token openedBracketToken = new Token("closedBracket", "end_class", "specialChars", "}");
+					listToken.add(openedBracketToken);
 				}
 			}
 		}
@@ -119,6 +146,7 @@ public class Tokenizer {
 		retour.add(typeDouble);
 		retour.add(typeString);
 		retour.add(typeChar);
+		retour.add(typeVoid);
 		
 		return retour;
 	}
@@ -186,7 +214,9 @@ public class Tokenizer {
 			    while (st.hasMoreTokens()) {
 			         String currentString = st.nextToken();
 			        retour.add(currentString);
+			        
 			     }
+			    
 			}
 			br.close();
 			return retour;
