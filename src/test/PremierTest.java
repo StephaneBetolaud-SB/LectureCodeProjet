@@ -7,4 +7,12 @@ public class PremierTest {
 	
 	private int number = 1 ;
 	
+	private String coucou = "Bonsoir" ;
+	
+	public double hi = 12.0;
+	
+	public void create() {
+		
+	}
+	
 }
