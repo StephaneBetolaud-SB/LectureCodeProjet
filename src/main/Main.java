@@ -12,7 +12,7 @@ public class Main {
 		
 		Tokenizer token = new Tokenizer();
 		
-		File file = new File("C:\\Users\\sbeto\\OneDrive\\Bureau\\LectureCodeProjet\\src\\test\\PremierTest.java");
+		File file = new File("..\\LectureCodeProjet\\src\\test\\PremierTest.java");
 		// try de la methode tokenizer
 		try {
 			token.tokenizer(file);
@@ -21,5 +21,4 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
-
 }
