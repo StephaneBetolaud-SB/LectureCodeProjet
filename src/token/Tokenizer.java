@@ -34,22 +34,6 @@ public class Tokenizer {
 	public static final String typeVoid = "void";
 	
 	// special chars
-	
-	/*EGAL,
-	
-	VIRGULE,
-	POINT_INTERROGATION,
-	POINT_VIRGULE,
-	DEUX_POINTS,
-	CROCHET_OUVRANT,
-	CROCHET_FERMANT,
-	ET,
-	OU,
-	GUILLEMET,
-	COTE,
-	SLASH,
-	ANTISLASH */
-	
 	private static final String equal = "=";
 	private static final String doubleEqual = "==";
 	private static final String openedBracket = "{";
@@ -75,7 +59,6 @@ public class Tokenizer {
 	public Tokenizer() {
 		
 	}
-	/*String nom,String informationToken, String type, String valeur */
 	
 	public List<Token> tokenizer(File file) throws FileNotFoundException {
 		List<Token> listToken = new ArrayList<Token>();
@@ -85,30 +68,52 @@ public class Tokenizer {
 			if(isStringProperty) {
 				boolean isStringType = isType(strings.get(i+1));
 				if(isStringType) {
+					// si la string contient un point virgule on split
 					if(strings.get(i+3).equals(semiColon)) {
 						Token token = new Token(strings.get(i+2).toString(),"ClassVariable",strings.get(i+1), "noValue");
 						Token tokenEndStatement = new Token("semiColon","EndStatement", "specialChars", ";");
 						listToken.add(token);
 						listToken.add(tokenEndStatement);
+						
 					}
 					
+					if(strings.get(i+2).contains(semiColon)) {
+						int length = strings.get(i+2).length();
+						String nomVariable = strings.get(i+2).substring(0, length-1);
+						Token token = new Token(nomVariable,"ClassVariable",strings.get(i+1), "noValue");
+						Token tokenEndStatement = new Token("semiColon","EndStatement", "specialChars", ";");
+						listToken.add(token);
+						listToken.add(tokenEndStatement);
+						
+					}
+					
+					
 					if(strings.get(i+3).equals(equal)) {
-							// affectation d'une valeur a une variable
+						// affectation d'une valeur a une variable
+						if(strings.get(i+4).contains(semiColon)) {
+							int length  = strings.get(i+4).length();
+							String valeurVariable = strings.get(i+4).substring(0, length-1);
+							Token token = new Token(strings.get(i+2).toString(),"ClassVariable",strings.get(i+1),valeurVariable);
+							listToken.add(token);
+							Token tokenEndStatement = new Token("semiColon","EndStatement", "specialChars", ";");
+							listToken.add(tokenEndStatement);
+						}
+						else {
 							Token token = new Token(strings.get(i+2).toString(),"ClassVariable",strings.get(i+1),strings.get(i+4));
 							listToken.add(token);
-							if(strings.get(i+5).equals(semiColon)) {
-								Token tokenEndStatement = new Token("semiColon","EndStatement", "specialChars", ";");
-								listToken.add(tokenEndStatement);
-							}
 						}
+						
+					}
+				
 						
 					// c'est une methode sans arguments
 					if(strings.get(i+2).contains("()")) {
 						Token methodToken = new Token(strings.get(i+2),"method width no arguments",strings.get(i+1),"noValue");
 						listToken.add(methodToken);
-					}
-					else {
-						// methodes avec arguments
+						if(strings.get(i+3).equals(openedBracket)) {
+							Token openedBracketToken = new Token("openedBracket", "start_method", "specialChars", "{");
+							listToken.add(openedBracketToken);
+						}
 						
 					}
 					
@@ -124,6 +129,13 @@ public class Tokenizer {
 					}
 				}
 			}
+			
+			if(strings.get(i).equals(closedBracket) && i != strings.size()-1) {
+				Token openedBracketToken = new Token("closedBracket", "end_method", "specialChars", "}");
+				listToken.add(openedBracketToken);
+				i++;
+			}
+			
 			if(i == strings.size()-1) {
 				if(strings.get(i).equals(closedBracket)) {
 					Token openedBracketToken = new Token("closedBracket", "end_class", "specialChars", "}");
