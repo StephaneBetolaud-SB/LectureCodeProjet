@@ -79,6 +79,12 @@ public class Tokenizer {
 	public List<String> initProperties(){
 		List<String> retour = new ArrayList<String>();
 		
+		retour.add(propertyPublic);
+		retour.add(propertyPrivate);
+		retour.add(propertyStatic);
+		retour.add(propertyProtected);
+		
+		
 		
 		return retour;
 	}
