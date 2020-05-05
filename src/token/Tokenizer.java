@@ -21,6 +21,7 @@ public class Tokenizer {
 	private static final String propertyStatic = "static";
 	private static final String propertyProtected = "protected";
 	
+	
 	// types
 	
 	private static final String typeBool = "boolean";
