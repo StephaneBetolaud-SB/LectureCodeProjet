@@ -64,6 +64,7 @@ public class Tokenizer {
 		List<Token> listToken = new ArrayList<Token>();
 		List<String> strings = tokenizerToArrayList(file);
 		for(int i = 0 ; i < strings.size() ; i++) {
+//			/System.out.println(strings.get(i));
 			boolean isStringProperty = isProperty(strings.get(i));
 			if(isStringProperty) {
 				boolean isStringType = isType(strings.get(i+1));
@@ -104,7 +105,8 @@ public class Tokenizer {
 						}
 						
 					}
-				
+					
+					
 						
 					// c'est une methode sans arguments
 					if(strings.get(i+2).contains("()")) {
@@ -114,8 +116,9 @@ public class Tokenizer {
 							Token openedBracketToken = new Token("openedBracket", "start_method", "specialChars", "{");
 							listToken.add(openedBracketToken);
 						}
-						
+						//System.out.println(strings.get(i+7));
 					}
+					
 					
 				}
 				else {
@@ -127,6 +130,48 @@ public class Tokenizer {
 							listToken.add(openedBracketToken);
 						}
 					}
+					
+					/*if(strings.get(i+1).equals("static") && strings.get(i+2).equals("void") && strings.get(i+3).equals("main")) {
+						Token mainToken = new Token("Main method","start_main","Main","noValue");
+						continue;
+					}*/
+				}
+			}
+			
+			boolean isType = isType(strings.get(i));
+			if(isType) {
+				// variable de methode
+				//System.out.println(strings.get(i+2));
+				// si la variable possède une valeur : 
+				if(strings.get(i+2).equals(equal)) {
+					Token variableMethodToken = new Token(strings.get(i+1), "method variable", strings.get(i), strings.get(i+3));
+					listToken.add(variableMethodToken);
+					if(strings.get(i+4).contains(";")) {
+						Token variableMethodToken2 = new Token(strings.get(i+1), "method variable", strings.get(i), strings.get(i+3));
+						listToken.add(variableMethodToken2);
+						Token tokenEndStatement = new Token("semiColon","EndStatement", "specialChars", ";");
+						listToken.add(tokenEndStatement);
+					}
+				}
+				// variable de possède pas de valeur
+				else {
+					Token variableMethodToken = new Token(strings.get(i+1), "method variable", strings.get(i),"noValue");
+					listToken.add(variableMethodToken);
+				}
+				
+			}
+			
+			//System.out.println(strings.get(i));
+			if(strings.get(i).equals("import")) {
+				if(strings.get(i+1).contains(";")) {
+					Token importToken = new Token("Import","Import", strings.get(i+1).substring(0,strings.get(i+1).length()-1) ,strings.get(i+1).substring(0,strings.get(i+1).length()-1));
+					listToken.add(importToken);
+					Token tokenEndStatement = new Token("semiColon","EndStatement", "specialChars", ";");
+					listToken.add(tokenEndStatement);
+				}
+				else {
+					Token importToken = new Token("Import","Import", strings.get(i+1) ,strings.get(i+1));
+					listToken.add(importToken);
 				}
 			}
 			

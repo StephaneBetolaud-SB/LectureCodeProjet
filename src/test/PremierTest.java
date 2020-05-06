@@ -1,5 +1,7 @@
 package test;
 
+import java.io.File;
+
 public class PremierTest {
 
 	private String bonsoir;
@@ -8,12 +10,11 @@ public class PremierTest {
 	
 	private String coucou = "Bonsoir";
 	
-	public double hi = 12.0;
+	private double hi = 12.0;
 	
-	public void create() {
-		//private double hey;
+	private void create() {
+		int integer;
+		int integer2 = 21;
+		String str = "coucoucoucoucouc";
 	}
-	
-	
-	
 }
