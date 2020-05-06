@@ -22,7 +22,6 @@ public class Tokenizer {
 	private static final String propertyProtected = "protected";
 	
 	// types
-	
 	private static final String typeBool = "boolean";
 	private static final String typeInt = "int";
 	private static final String typeInteger = "Integer";
@@ -37,7 +36,7 @@ public class Tokenizer {
 		
 	}
 	
-	public void tokenizer(File file) throws FileNotFoundException {
+	public Token<List> tokenizer(File file) throws FileNotFoundException {
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		String line;
 		try {
@@ -47,16 +46,14 @@ public class Tokenizer {
 				StringTokenizer st = new StringTokenizer(line);
 			     while (st.hasMoreTokens()) {
 			         System.out.println(st.nextToken());
-			     }
-				
-				
+			     }		
 			}
 			br.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		return new Token<List>();
 	}
 	
 	// initialisation de la liste des types
@@ -77,8 +74,6 @@ public class Tokenizer {
 	
 	public List<String> initProperties(){
 		List<String> retour = new ArrayList<String>();
-		
-		
 		return retour;
 	}
 }
