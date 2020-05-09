@@ -1,11 +1,2 @@
-/token/
-<<<<<<< HEAD
-/main/
-/test/
-=======
-/scoring/
-/main/
 /parser/
-/expression/
->>>>>>> 863fc0e75f0302dfdec8d411a506608c57a92c65
-/enumerations/
+/scoring/

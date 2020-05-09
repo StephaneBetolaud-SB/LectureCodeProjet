@@ -11,7 +11,7 @@ public class Parser {
 		
 	}
 	
-	public Exepression<List> parser(List<Token> tokens){
+	public Expression<List> parser(List<Token> tokens){
 		return new Expression<List>();
 	}
 }

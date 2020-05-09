@@ -14,9 +14,9 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Scoring score = new Scoring();
-		
-		File file = new File("Test.txt");
+		Tokenizer token = new Tokenizer();
+		//Scoring score = new Scoring();
+		File file = new File("..\\LectureCodeProjet\\src\\test\\PremierTest.java");
 		// try de la methode tokenizer
 		try {
 
@@ -25,8 +25,8 @@ public class Main {
 				System.out.println(t.toString());
 			}
 
-			score.score(file);
-			score.report();
+			/*score.score(file);
+			score.report();*/
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

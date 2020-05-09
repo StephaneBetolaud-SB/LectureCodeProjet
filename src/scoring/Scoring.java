@@ -37,12 +37,12 @@ public class Scoring {
 	}
 	
 	public void report() {
-		System.out.println("------ Résultats ------");
+		System.out.println("------ Resultats ------");
 		
 		System.out.println("Nombre de lignes : " + this.numberOfLines);
-		System.out.println("Variables déclarées : " + this.declaredVariables);
+		System.out.println("Variables declarees : " + this.declaredVariables);
 		System.out.println("Nombre d'imports : " + this.imports);
-		System.out.println("Variables privées : " + this.privateVariables);
+		System.out.println("Variables privees : " + this.privateVariables);
 	}
 	
 	public Tokenizer token;
