@@ -38,6 +38,10 @@ public class Expression {
 		startClass = "";
 	}
 
+	public String getValue() {
+		return value;
+	}
+	
 	public Expression evaluateToken(Token t) {
 		this.setType(t.getInformationToken());
 		Expression e = new Expression();
@@ -96,101 +100,8 @@ public class Expression {
 		return type;
 	}
 
-	public String getEndMethod() {
-		return endMethod;
-	}
-
-	public String getMethodVariable() {
-		return methodVariable;
-	}
-	
-	public String getStartClass() {
-		return startClass;
-	}
-	
-	public void setStartClass(String valeur) {
-		startClass = valeur;
-	}
-
-	public void setEndClass(String valeur) {
-		endClass = valeur;
-		
-	}
-
-	public void setEndMethod(String valeur) {
-		endMethod = valeur;
-	}
-
-	public void setMethodNoArgs(String valeur) {
-		methodNoArgs = valeur;
-	}
-	
-	public String getMethodNoArgs() {
-		return methodNoArgs;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
 	public void setValue(String value) {
 		this.value = value;
-	}
-
-	public void setStartMethod(String valeur) {
-		startMethod = valeur;
-	}
-
-	public String getStartMethod() {
-		return startMethod;
-	}
-
-	public String getEndStatement() {
-		return endStatement;
-	}
-
-	public void setEndStatement(String value) {
-		this.value = value;
-	}
-
-	public String getVariableName() {
-		return variableName;
-	}
-
-	public void setVariableName(String variableName) {
-		this.variableName = variableName;
-	}
-
-	public String getClassName() {
-		return className;
-	}
-
-	public void setClassName(String className) {
-		this.className = className;
-	}
-
-	public String getClassVariable() {
-		return classVariable;
-	}
-
-	public void setClassVariable(String name) {
-		this.className = name;
-	}
-
-	public String getImportName() {
-		return importName;
-	}
-
-	public void setImportName(String value) {
-		this.importName = value;
-	}
-
-	public String getMethodName() {
-		return methodName;
-	}
-
-	public void setMethodName(String methodName) {
-		this.methodName = methodName;
 	}
 	
 
@@ -230,7 +141,4 @@ public class Expression {
 			return "";
 		}
 	}
-
-	
-
 }
