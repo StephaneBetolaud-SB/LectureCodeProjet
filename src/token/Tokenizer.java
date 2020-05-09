@@ -110,7 +110,7 @@ public class Tokenizer {
 						
 					// c'est une methode sans arguments
 					if(strings.get(i+2).contains("()")) {
-						Token methodToken = new Token(strings.get(i+2),"method width no arguments",strings.get(i+1),"noValue");
+						Token methodToken = new Token(strings.get(i+2),"method with no arguments",strings.get(i+1),"noValue");
 						listToken.add(methodToken);
 						if(strings.get(i+3).equals(openedBracket)) {
 							Token openedBracketToken = new Token("openedBracket", "start_method", "specialChars", "{");
@@ -118,7 +118,6 @@ public class Tokenizer {
 						}
 						//System.out.println(strings.get(i+7));
 					}
-					
 					
 				}
 				else {
@@ -142,7 +141,7 @@ public class Tokenizer {
 			if(isType) {
 				// variable de methode
 				//System.out.println(strings.get(i+2));
-				// si la variable possède une valeur : 
+				// si la variable possï¿½de une valeur : 
 				if(strings.get(i+2).equals(equal)) {
 					Token variableMethodToken = new Token(strings.get(i+1), "method variable", strings.get(i), strings.get(i+3));
 					listToken.add(variableMethodToken);
@@ -153,7 +152,7 @@ public class Tokenizer {
 						listToken.add(tokenEndStatement);
 					}
 				}
-				// variable de possède pas de valeur
+				// variable de possï¿½de pas de valeur
 				else {
 					Token variableMethodToken = new Token(strings.get(i+1), "method variable", strings.get(i),"noValue");
 					listToken.add(variableMethodToken);
