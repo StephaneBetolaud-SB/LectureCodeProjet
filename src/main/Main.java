@@ -25,8 +25,8 @@ public class Main {
 				System.out.println(t.toString());
 			}
 
-			/*score.score(file);
-			score.report();*/
+			score.score(file);
+			score.report();
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

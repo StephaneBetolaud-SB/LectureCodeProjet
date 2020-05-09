@@ -106,7 +106,8 @@ public class Tokenizer {
 						
 					}
 					
-
+					
+						
 					// c'est une methode sans arguments
 					if(strings.get(i+2).contains("()")) {
 						Token methodToken = new Token(strings.get(i+2),"method width no arguments",strings.get(i+1),"noValue");
