@@ -17,4 +17,8 @@ public class PremierTest {
 		int integer2 = 21;
 		String str = "coucoucoucoucouc";
 	}
+	
+	public static void main(String n) {
+		
+	}
 }

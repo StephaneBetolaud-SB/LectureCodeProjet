@@ -106,8 +106,7 @@ public class Tokenizer {
 						
 					}
 					
-					
-						
+
 					// c'est une methode sans arguments
 					if(strings.get(i+2).contains("()")) {
 						Token methodToken = new Token(strings.get(i+2),"method width no arguments",strings.get(i+1),"noValue");
@@ -117,9 +116,7 @@ public class Tokenizer {
 							listToken.add(openedBracketToken);
 						}
 						//System.out.println(strings.get(i+7));
-					}
-					
-					
+					}	
 				}
 				else {
 					if(strings.get(i+1).equals("class")) {
@@ -130,11 +127,6 @@ public class Tokenizer {
 							listToken.add(openedBracketToken);
 						}
 					}
-					
-					/*if(strings.get(i+1).equals("static") && strings.get(i+2).equals("void") && strings.get(i+3).equals("main")) {
-						Token mainToken = new Token("Main method","start_main","Main","noValue");
-						continue;
-					}*/
 				}
 			}
 			
@@ -160,8 +152,12 @@ public class Tokenizer {
 				}
 				
 			}
+			if(strings.get(i+1).equals("static") && strings.get(i+2).equals("void") && strings.get(i+3).equals("main")) {
+				Token mainToken = new Token("Main method","start_main","Main","noValue");
+				listToken.add(mainToken);
+				continue;
+			}
 			
-			//System.out.println(strings.get(i));
 			if(strings.get(i).equals("import")) {
 				if(strings.get(i+1).contains(";")) {
 					Token importToken = new Token("Import","Import", strings.get(i+1).substring(0,strings.get(i+1).length()-1) ,strings.get(i+1).substring(0,strings.get(i+1).length()-1));
