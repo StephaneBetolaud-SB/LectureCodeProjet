@@ -77,6 +77,7 @@ public class Tokenizer {
 						listToken.add(tokenEndStatement);
 						
 					}
+					else {
 					
 					if(strings.get(i+2).contains(semiColon)) {
 						int length = strings.get(i+2).length();
@@ -87,10 +88,15 @@ public class Tokenizer {
 						listToken.add(tokenEndStatement);
 						
 					}
+					else {
+						Token token = new Token(strings.get(i+2).toString(),"ClassVariable",strings.get(i+1), "noValue");
+						listToken.add(token);
+					}
 					
-					
+					}
 					if(strings.get(i+3).equals(equal)) {
 						// affectation d'une valeur a une variable
+						
 						if(strings.get(i+4).contains(semiColon)) {
 							int length  = strings.get(i+4).length();
 							String valeurVariable = strings.get(i+4).substring(0, length-1);
@@ -100,10 +106,19 @@ public class Tokenizer {
 							listToken.add(tokenEndStatement);
 						}
 						else {
-							Token token = new Token(strings.get(i+2).toString(),"ClassVariable",strings.get(i+1),strings.get(i+4));
-							listToken.add(token);
+							if(strings.get(i+5).equals(semiColon)) {
+								int length  = strings.get(i+4).length();
+								String valeurVariable = strings.get(i+4).substring(0, length-1);
+								Token token = new Token(strings.get(i+2).toString(),"ClassVariable",strings.get(i+1),valeurVariable);
+								listToken.add(token);
+								Token tokenEndStatement = new Token("semiColon","EndStatement", "specialChars", ";");
+								listToken.add(tokenEndStatement);
+							}
+							else {
+								Token token = new Token(strings.get(i+2).toString(),"ClassVariable",strings.get(i+1),strings.get(i+4));
+								listToken.add(token);
+							}
 						}
-						
 					}
 					
 					
@@ -132,16 +147,21 @@ public class Tokenizer {
 			}
 			
 			boolean isType = isType(strings.get(i));
-			if(isType) {
+			if(isType && ! isProperty(strings.get(i-1))) {
 				// variable de methode
 				//System.out.println(strings.get(i+2));
 				// si la variable possède une valeur : 
+				
 				if(strings.get(i+2).equals(equal)) {
+					//Token equal = new Token("=", "equal", )
+					
 					Token variableMethodToken = new Token(strings.get(i+1), "method variable", strings.get(i), strings.get(i+3));
+					
 					listToken.add(variableMethodToken);
-					if(strings.get(i+4).contains(";")) {
-						Token variableMethodToken2 = new Token(strings.get(i+1), "method variable", strings.get(i), strings.get(i+3));
-						listToken.add(variableMethodToken2);
+					//System.out.println(strings.get(i+3));
+					if(strings.get(i+3).contains(";")) {
+						//Token variableMethodToken2 = new Token(strings.get(i+1), "method variable", strings.get(i), strings.get(i+3));
+						//listToken.add(variableMethodToken2);
 						Token tokenEndStatement = new Token("semiColon","EndStatement", "specialChars", ";");
 						listToken.add(tokenEndStatement);
 					}
@@ -150,6 +170,13 @@ public class Tokenizer {
 				else {
 					Token variableMethodToken = new Token(strings.get(i+1), "method variable", strings.get(i),"noValue");
 					listToken.add(variableMethodToken);
+					System.out.println("on passe par la " + strings.get(i+1));
+					if(strings.get(i+1).contains(";")) {
+						//Token variableMethodToken2 = new Token(strings.get(i+1), "method variable", strings.get(i), strings.get(i+3));
+						//listToken.add(variableMethodToken2);
+						Token tokenEndStatement = new Token("semiColon","EndStatement", "specialChars", ";");
+						listToken.add(tokenEndStatement);
+					}
 				}
 				
 			}

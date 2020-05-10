@@ -83,7 +83,7 @@ public class Scoring {
 		int correct = 0;
 		int nbr = 0;
 		for(int i = 0 ; i < expressions.size() ; i++) {
-			if(expressions.get(i).equals("ClassVariable")) {
+			if(expressions.get(i).getType().equals("ClassVariable")) {
 				nbr ++;
 				if(expressions.get(i+1).getType().equals("EndStatement")) {
 					correct ++;
@@ -130,7 +130,7 @@ public class Scoring {
 		int correct = 0;
 		int nbr = 0;
 		for(int i = 0 ; i < expressions.size() ; i++) {
-			if(expressions.get(i).equals("method variable")) {
+			if(expressions.get(i).getType().equals("method variable")) {
 				nbr ++;
 				if(expressions.get(i+1).getType().equals("EndStatement")) {
 					correct ++;
