@@ -2,12 +2,12 @@ package main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import token.Token;
-
-
-import token.Tokenizer;
+import expression.Expression;
 import scoring.Scoring;
+import token.Tokenizer;
 
 public class Main {
 
@@ -15,19 +15,18 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		Tokenizer token = new Tokenizer();
-		//Scoring score = new Scoring();
+		
+		// chemin pour YASSIN : /home/yassin/eclipse-workspace/LectureCodeProjet/src/test/PremierTest.java
+		
 		File file = new File("..\\LectureCodeProjet\\src\\test\\PremierTest.java");
 		// try de la methode tokenizer
 		try {
-
-			List<Token> tokens = token.tokenizer(file);
-			for(Token t : tokens ) {
-				System.out.println(t.toString());
-			}
-
-			score.score(file);
-			score.report();
-
+			
+			Scoring scoring = new Scoring();
+			
+			scoring.score(file);
+			scoring.report();
+				
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

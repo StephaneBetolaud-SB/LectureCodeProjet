@@ -48,8 +48,6 @@ public class Token {
 	
 	public String toString() {
 		return "token de nom : " + this.nom + ", l'information du token est : " + this.informationToken + ", le type : " + this.type + " et de valeur : " + this.valeur;
-		//return "le type : " + this.type;
-		//return this.informationToken;
 	}
 
 }

@@ -4,59 +4,65 @@ import token.Token;
 
 public class Expression {
 
+	// deja utilise
 	private String type;
 	private String value;
-	private String variableName;
-	private String importName;
-	private String methodName;
-	private String methodVariable;
-	private String className;
-	private String character;
-	private String endStatement;
-	private String classVariable;
-	private String startMethod;
-	private String endMethod;
-	private String methodNoArgs;
-	private String endClass;
-	private String startClass;
+	private String nom;
+	// pas utilise
+	
+	private String typeVariable;
+	
+	
 
 	public Expression() {
 		type = "";
 		value = ""; 
-		variableName = "";
-		importName = "";
-		methodName = "";
-		methodVariable = "";
-		className = "";
-		character= "";
-		endStatement= "";
-		classVariable= "";
-		startMethod= "";
-		endMethod= "";
-		methodNoArgs= "";
-		endClass= "";
-		startClass = "";
 	}
 
 	public String getValue() {
 		return value;
 	}
 	
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	
+	
+	public String getTypeVariable() {
+		return typeVariable;
+	}
+
+	public void setTypeVariable(String typeVariable) {
+		this.typeVariable = typeVariable;
+	}
+
 	public Expression evaluateToken(Token t) {
-		this.setType(t.getInformationToken());
 		Expression e = new Expression();
-		switch(this.type) {
+		e.setType(t.getInformationToken());
+		e.setNom(t.getNom());
+		e.setTypeVariable(t.getType());
+		
+		switch(e.type) {
 		
 		case "Import":
-			System.out.println(e.getValue());
+			//System.out.println(e.getValue());
+			e.setValue(t.getValeur());
 			break;
 			
 		case "EndStatement":
+			
 			e.setValue(t.getValeur());
+			//System.out.println(e.getValue());
 			break;
 		
 		case "ClassName":
 			e.setValue(t.getValeur());
+			//System.out.println(e.getValue());
 			break;
 			
 		case "start_class":
@@ -86,8 +92,12 @@ public class Expression {
 		case "end_class":
 			e.setValue(t.getValeur());
 			break;
+		default:
+			 e.setValue("coucoucoucou");
+			 break;
 		}
-		e.toString();
+		
+		//e.toString();
 		return e;
 	}
 	
@@ -125,20 +135,20 @@ public class Expression {
 		case "method variable":
 			return "Type : method variable, value : " + this.getValue();
 			
-		case "method with no arguments":
+		case "method width no arguments":
 			return "Type : method with no arguments, value : " + this.getValue();
 
 		case "start_method":
-			return "Type : start_mathod, value : " + this.getValue();
+			return "Type : start_method, value : " + this.getValue();
 			
 		case "end_method":
 			return "Type : end_method, value : " + this.getValue();
 			
 		case "end_class":
-			return "Type : start_class, value : " + this.getValue();
+			return "Type : end_class, value : " + this.getValue();
 			
 		default:
-			return "";
+			return "lalala";
 		}
 	}
 }

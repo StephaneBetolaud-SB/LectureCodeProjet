@@ -153,11 +153,6 @@ public class Tokenizer {
 				}
 				
 			}
-			if(strings.get(i+1).equals("static") && strings.get(i+2).equals("void") && strings.get(i+3).equals("main")) {
-				Token mainToken = new Token("Main method","start_main","Main","noValue");
-				listToken.add(mainToken);
-				continue;
-			}
 			
 			if(strings.get(i).equals("import")) {
 				if(strings.get(i+1).contains(";")) {
